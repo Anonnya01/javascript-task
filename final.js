@@ -3,7 +3,7 @@ function totalFine(fare) {
     return "Invalid";
   }
   const fine = fare + fare * (20 / 100) + 30;
-  return fine;
+  return parseFloat(fine);
 }
 
 function onlyCharacter(str) {
@@ -15,7 +15,12 @@ function onlyCharacter(str) {
 }
 
 function bestTeam(player1, player2) {
-  if (typeof player1 !== "object" || typeof player2 !== "object") {
+  if (
+    typeof player1 !== "object" ||
+    typeof player2 !== "object" ||
+    Array.isArray(player1) ||
+    Array.isArray(player2)
+  ) {
     return "Invalid";
   }
 
@@ -66,13 +71,13 @@ function resultReport(marks) {
   const round = Math.floor(average);
 
   for (let i = 0; i < marks.length; i++) {
-    if (marks[i] > 40) {
+    if (marks[i] >= 40) {
       pass.push(marks[i]);
     }
   }
 
   for (let i = 0; i < marks.length; i++) {
-    if (marks[i] <= 40) {
+    if (marks[i] < 40) {
       fail.push(marks[i]);
     }
   }
@@ -80,3 +85,5 @@ function resultReport(marks) {
   const result = { finalScore: round, pass: pass.length, fail: fail.length };
   return result;
 }
+const total = resultReport([98, 87, 67, 11, 92, 33, 87]);
+console.log(total);
