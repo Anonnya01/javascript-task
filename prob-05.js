@@ -17,15 +17,11 @@ function resultReport(marks) {
   const average = sum / marks.length;
   const round = Math.floor(average);
 
-  // ---------pass--------//
+  // ---------pass/fail--------//
   for (let i = 0; i < marks.length; i++) {
     if (marks[i] > 40) {
       pass.push(marks[i]);
-    }
-  }
-  // -------fail-----//
-  for (let i = 0; i < marks.length; i++) {
-    if (marks[i] <= 40) {
+    } else if (marks[i] <= 40) {
       fail.push(marks[i]);
     }
   }
@@ -34,5 +30,5 @@ function resultReport(marks) {
   return result;
 }
 
-const total = resultReport([98, 87, 67, 91, 92, 33, 87]);
+const total = resultReport([98, 30, 40, 50]);
 console.log(total);

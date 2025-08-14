@@ -3,7 +3,7 @@ function totalFine(fare) {
     return "Invalid";
   }
   const fine = fare + fare * (20 / 100) + 30;
-  return parseFloat(fine);
+  return Number(fine.toFixed(2));
 }
 
 function onlyCharacter(str) {
@@ -23,7 +23,6 @@ function bestTeam(player1, player2) {
   ) {
     return "Invalid";
   }
-
   let total1 = player1.foul + player1.cardY + player1.cardR;
   const sum1 = total1;
   let total2 = player2.foul + player2.cardY + player2.cardR;
@@ -59,7 +58,6 @@ function resultReport(marks) {
   if (marks.length === 0) {
     return { finalScore: 0, pass: 0, fail: 0 };
   }
-
   const pass = [];
   const fail = [];
   let sum = 0;
@@ -73,17 +71,11 @@ function resultReport(marks) {
   for (let i = 0; i < marks.length; i++) {
     if (marks[i] >= 40) {
       pass.push(marks[i]);
-    }
-  }
-
-  for (let i = 0; i < marks.length; i++) {
-    if (marks[i] < 40) {
+    } else if (marks[i] < 40) {
       fail.push(marks[i]);
     }
   }
-
   const result = { finalScore: round, pass: pass.length, fail: fail.length };
   return result;
 }
-const total = resultReport([98, 87, 67, 11, 92, 33, 87]);
-console.log(total);
+
